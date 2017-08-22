@@ -1,12 +1,15 @@
+#!/usr/bin/env ruby -W1
+# encoding: UTF-8
+
 require 'json'
 require 'httparty'
-
-tags = JSON.parse(IO.read('doctags.json'))
 
 def slugify (s)
    # https://stackoverflow.com/questions/4308377/ruby-post-title-to-slug/4308399#4308399
   return s.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '').squeeze('-')
 end
+
+tags = JSON.parse(IO.read('doctags.json'))
 
 tag_lookup = {}
 tags.each do | tag |
@@ -16,10 +19,10 @@ end
 topics = JSON.parse(IO.read('topics.json'))
 
 topics.each do | topic |
-  url = 'https://web.archive.org/save/https://stackoverflow.com/documentation/' +
-        tag_lookup[topic['DocTagId']] +
-        "/#{topic['Id']}/" +
-        slugify(topic['Title'])
+  url = URI('https://web.archive.org/save/https://stackoverflow.com/documentation/' +
+            tag_lookup[topic['DocTagId']] +
+            "/#{topic['Id']}/" +
+            slugify(topic['Title']))
 
   response = HTTParty.get(url)
 
