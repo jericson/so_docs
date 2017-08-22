@@ -7,6 +7,7 @@ The currently available tools are:
 
 * `save_to_wbm.rb`&mdash;a Ruby script that submits all topics to the [Internet Archive Wayback Machine](https://web.archive.org/). Demonstrates how to use `doctags.json` and `topics.json`. (I ran it on August 16, 2017 after Documentation was put in readonly mode. There's probably no reason to run it again. Also, it doesn't work.)
 * `save_attribution_wbm.rb`&mdash;Submits example attribution to the Wayback Machine. (Also doesn't work.)
-* Stay tuned for other exciting scripts![^1]
+* Stay tuned for other exciting scripts!<sup>*</sup>
 
-[^1]: Offer contingent on author's creativity and reader's ability to be excited.
+---
+\* Offer contingent on author's creativity and reader's ability to be excited.
