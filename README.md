@@ -5,8 +5,9 @@ Pour one out for [Stack Overflow Documentation](https://meta.stackoverflow.com/q
 
 The currently available tools are:
 
-* `save_to_wbm.rb`&mdash;a Ruby script that submits all topics to the [Internet Archive Wayback Machine](https://web.archive.org/). Demonstrates how to use `doctags.json` and `topics.json`. (I ran it on August 16, 2017 after Documentation was put in readonly mode. There's probably no reason to run it again. Also, it doesn't work.)
-* `save_attribution_wbm.rb`&mdash;Submits example attribution to the Wayback Machine. (Also doesn't work.)
+* `example2html.rb`&mdash;Extract the HTML representation of an example.
+* `attribution2wbm.rb`&mdash;Submits example attribution to the Wayback Machine.
+* `submit2wbm.rb`&mdash;a Ruby script that submits all topics to the [Internet Archive Wayback Machine](https://web.archive.org/). Demonstrates how to use `doctags.json` and `topics.json`. (I ran it on August 16, 2017 after Documentation was put in readonly mode. There's probably no reason to run it again. Also, it doesn't work for C# as `c%23` isn't allowed in their URLs.)
 * Stay tuned for other exciting scripts!<sup>*</sup>
 
 ---
