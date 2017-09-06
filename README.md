@@ -14,5 +14,7 @@ The currently available examples are:
 
 I'm working with Ruby, but I'm happy to accept scripts written in other languages as long as I can test them out. I'm also happy to include links to other project using Documentation archive in this README. Feel free to submit pull requests and I'll incorporate them as quickly as I can.
 
+If there's something you'd like to see from the archive and can't figure out how to extract the content, feel free to [add an issue](https://github.com/jericson/so-docs-tools/issues) or [ask on Meta Stack Overflow](https://meta.stackoverflow.com/questions/ask?tags=documentation,feature-request).
+
 ---
 \* Offer contingent on author's creativity and reader's ability to be excited.
