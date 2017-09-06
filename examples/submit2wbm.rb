@@ -1,6 +1,9 @@
 #!/usr/bin/env ruby -W1
 # encoding: UTF-8
 
+## Don't actually use this script. It works in many cases, but not for
+## C# topics. The Wayback Machine does not allow c%23 in URLs.
+
 require 'json'
 require 'httparty'
 
@@ -19,13 +22,13 @@ end
 topics = JSON.parse(IO.read('topics.json'))
 
 topics.each do | topic |
-  url = URI('https://web.archive.org/save/https://stackoverflow.com/documentation/' +
-            tag_lookup[topic['DocTagId']] +
-            "/#{topic['Id']}/" +
-            slugify(topic['Title']))
+  url = URI.escape('https://web.archive.org/save/https://stackoverflow.com/documentation/' +
+                   tag_lookup[topic['DocTagId']] +
+                   "/#{topic['Id']}/" +
+                   slugify(topic['Title']))
 
+  puts url
   response = HTTParty.get(url)
-
   puts response.code, response.message, response.headers.inspect
 end
                  
