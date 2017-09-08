@@ -32,7 +32,7 @@ end
 optparse.parse!
 
 docs = SODocs.new
-examples = docs.load_examples
+examples = docs.load_json('examples')
 
 examples.each do | example |
   id = example['Id']
@@ -46,7 +46,8 @@ examples.each do | example |
   puts check_url
   response = HTTParty.get(check_url)
   puts response.code, response.message, response.headers.inspect
-   
+
+  # Based on https://github.com/pastpages/savepagenow/blob/master/savepagenow/api.py
   if response.headers["x-page-cache"] == "MISS"
   
     save_url = URI('https://web.archive.org/save/' + url)
