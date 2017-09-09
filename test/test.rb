@@ -3,11 +3,12 @@ require 'digest/md5'
 
 class TestDocsDump < Minitest::Test
   def setup
-    md5 = Digest::MD5.file('documentation-dump.7z')
-    if md5 != 'c8013cdc92a1361af7b9d6e1aa2485fb'
+    if !File.exist?('documentation-dump.7z')      
       system("ruby examples/get-archive.rb")
       assert_equal $?, 0
     end
+    assert Digest::MD5.file('documentation-dump.7z'),
+           'c8013cdc92a1361af7b9d6e1aa2485fb'    
   end
 
   def test_archive
