@@ -22,6 +22,7 @@ If there's something you'd like to see from the archive and can't figure out how
 [![Build Status](https://travis-ci.org/jericson/so-docs-tools.svg?branch=master)](https://travis-ci.org/jericson/so-docs-tools)
 
 * Tests are fragile. Changing the way these scripts work in even minor ways will break the tests. (Fortunately, the tests are also simple, so changing the expected `md5` hash result usually suffices.)
+* Getting user's display names requires a call to the [Stack Exchange API](http://api.stackexchange.com/docs/users-by-ids), which is subject to [rate limiting](http://api.stackexchange.com/docs/throttle). The method does not check to see if it's used the daily quota. Nor does it cache results. So it's easy to be throttled if you aren't careful.
 
 ---
 \* Offer contingent on author's creativity and reader's ability to be excited.

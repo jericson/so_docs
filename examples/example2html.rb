@@ -14,28 +14,45 @@ require File.join(dir, 'so-docs.rb')
          
 docs = SODocs.new
 
+@topic_lookup = docs.index_topics('Id')
 @example_lookup = docs.index_examples('Id')
 @example_contributors = docs.index_contributors('DocExampleId')
+@tags = docs.index_tags('Id')
 
 abort('Usage: ' + $0 + ' example_id') unless ARGV.length >= 1
 
 ARGV.each do | id |
+  example = @example_lookup[id.to_i]
+  tag = @tags[@topic_lookup[example['DocTopicId']]['DocTagId']]['Title']
+  
   puts <<"HEADER"
 <!DOCTYPE html>
 <head>
-  <title>#{@example_lookup[id.to_i]['Title']}</title>
+  <title>#{example['Title']}&mdash;#{tag}</title>
 </head>
 <body>
+<h2>#{tag}</h2>
+<h1>#{example['Title']}</h1>
 HEADER
                  
-  puts @example_lookup[id.to_i]['BodyHtml']
+  puts example['BodyHtml']
 
-  puts '<p>Created by: <ul>'
-  @example_contributors[id.to_i].each do | contributor |
-    puts "<li>https://stackoverflow.com/users/#{contributor['UserId']}</li>"
+  puts <<"ATTRIBUTION"
+<hr />
+<p>Created by:<ul>
+ATTRIBUTION
+  user_ids = @example_contributors[id.to_i].map { |u| u['UserId'] }
+  display_names = docs.fetch_display_names(user_ids)
+  user_ids.each do | contributor |
+    puts <<"CONTRIBUTORS"
+    <li><a href='https://stackoverflow.com/users/#{contributor}'>
+        #{display_names[contributor]}</a></li>
+CONTRIBUTORS
   end
   puts <<"FOOTER"
 </ul></p>
+<p>This content was ported over from Stack Overflow Documentation, now retired. To access the source and attribution please access the <a href="https://archive.org/details/documentation-dump.7z">Docs archive</a> and reference topic ID: #{example['DocTopicId']} and example ID: #{id}.</p>
+<p>All user contributions licensed under <a href='https://creativecommons.org/licenses/by-sa/3.0/'>CC BY-SA 3.0</a> with <a href="https://stackoverflow.blog/2009/06/25/attribution-required/">attribution required</a>.</p>
 </body>
 </html>
 FOOTER
