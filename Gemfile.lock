@@ -1,7 +1,6 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    digest (0.0.1)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     minitest (5.10.3)
@@ -13,11 +12,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  digest
   httparty
   minitest
   rake
   seven_zip_ruby
 
 BUNDLED WITH
-   1.15.3
+   1.15.4
