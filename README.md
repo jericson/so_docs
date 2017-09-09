@@ -17,5 +17,11 @@ I'm working with Ruby, but I'm happy to accept scripts written in other language
 
 If there's something you'd like to see from the archive and can't figure out how to extract the content, feel free to [add an issue](https://github.com/jericson/so-docs-tools/issues) or [ask on Meta Stack Overflow](https://meta.stackoverflow.com/questions/ask?tags=documentation,discussion,archive).
 
+## Bugs
+
+[![Build Status](https://travis-ci.org/jericson/so-docs-tools.svg?branch=master)](https://travis-ci.org/jericson/so-docs-tools)
+
+* Tests are fragile. Changing the way these scripts work in even minor ways will break the tests. (Fortunately, the tests are also simple, so changing the expected `md5` hash result usually suffices.)
+
 ---
 \* Offer contingent on author's creativity and reader's ability to be excited.
