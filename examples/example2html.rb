@@ -41,7 +41,7 @@ HEADER
 <hr />
 <p>Created by:<ul>
 ATTRIBUTION
-  user_ids = @example_contributors[id.to_i].map { |u| u['UserId'] }
+  user_ids = @example_contributors[id.to_i].map { |u| u['UserId'] }.uniq
   display_names = docs.fetch_display_names(user_ids)
   user_ids.each do | contributor |
     puts <<"CONTRIBUTORS"

@@ -1,5 +1,5 @@
 require 'json'
-
+require 'httparty'
 
 class SODocs
   def initialize()
@@ -7,6 +7,7 @@ class SODocs
     @examples = []
     @doctags = []
     @contributors = []
+    @contributortypes = []
     @topichistories = []
     @display_names = {}
   end
@@ -52,6 +53,11 @@ class SODocs
     return multi_index(@contributors, index)
   end
 
+  def index_contributortypes (index)
+    load_json('contributortypes')
+    return multi_index(@contributortypes, index)
+  end
+
   def fetch_display_names(user_ids)
     user_ids.each do | id |
       # Default to userXXXX in case we can't find the user via the API
@@ -59,7 +65,7 @@ class SODocs
     end
     
     ids = user_ids.join(';')
-    uri = URI("http://api.stackexchange.com/2.2/users/#{ids}?site=stackoverflow")
+    uri = URI("http://api.stackexchange.com/2.2/users/#{ids}?site=stackoverflow&pagesize=100")
     response = HTTParty.get(uri)
     case response.code
     when 200
