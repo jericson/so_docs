@@ -77,6 +77,7 @@ class SODocs
       end
     else
       STDERR.puts uri, response.code
+      STDERR.response
     end
     return @display_names
   end
