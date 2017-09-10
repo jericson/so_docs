@@ -65,7 +65,9 @@ class SODocs
     end
     
     ids = user_ids.join(';')
-    uri = URI("http://api.stackexchange.com/2.2/users/#{ids}?site=stackoverflow&pagesize=100")
+    uri = URI("http://api.stackexchange.com/2.2/users/#{ids}")
+    uri.query = URI.encode_www_form({ :site     => 'stackoverflow',
+                                      :pagesize => 100 })
     response = HTTParty.get(uri)
     case response.code
     when 200
