@@ -13,6 +13,7 @@ class SODocs
   end
 
   def load_json (file)
+    # A little meta programming here to simplify things.
     eval("@#{file} = JSON.parse(IO.read('#{file}.json')) if @#{file}.empty?")
   end
                                           
@@ -66,8 +67,10 @@ class SODocs
     
     ids = user_ids.join(';')
     uri = URI("http://api.stackexchange.com/2.2/users/#{ids}")
-    uri.query = URI.encode_www_form({ :site     => 'stackoverflow',
-                                      :pagesize => 100 })
+    params = { :site     => 'stackoverflow',
+               :pagesize => 100 }
+    params[:key] = 'vff6LW*9JQzZOECmU1FK1g((' # This is not considered a secret.
+    uri.query = URI.encode_www_form(params)
     response = HTTParty.get(uri)
     case response.code
     when 200

@@ -58,7 +58,7 @@ examples.each do | example |
     puts save_url
     response = HTTParty.get(save_url)
     puts response.code, response.message, response.headers.inspect
-    exit unless response.code == 200
+    exit unless [200,404].include? response.code # Either success or the Docs page is gone.
     sleep 1 # Be respectful of archive.org's resources
   end
 end
