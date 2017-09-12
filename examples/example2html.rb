@@ -14,10 +14,10 @@ require File.join(dir, 'so-docs.rb')
          
 docs = SODocs.new
 
-@topic_lookup = docs.index_topics('Id')
-@example_lookup = docs.index_examples('Id')
-@example_contributors = docs.index_contributors('DocExampleId')
-@tags = docs.index_tags('Id')
+@topic_lookup = docs.index('topics', 'Id')
+@example_lookup = docs.index('examples', 'Id')
+@example_contributors = docs.multi_index('contributors', 'DocExampleId')
+@tags = docs.index('doctags', 'Id')
 
 abort('Usage: ' + $0 + ' example_id') unless ARGV.length >= 1
 

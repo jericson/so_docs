@@ -24,7 +24,6 @@ If there's something you'd like to see from the archive and can't figure out how
 * Tests are fragile. Changing the way these scripts work in even minor ways will break the tests. (Fortunately, the tests are also simple, so changing the expected `md5` hash result usually suffices.)
 * The test framework also pulls in the entire archive from Archive.org and doesn't clean it up. This might be considered a feature by some.
 * Getting user's display names requires a call to the [Stack Exchange API](http://api.stackexchange.com/docs/users-by-ids), which is subject to [rate limiting](http://api.stackexchange.com/docs/throttle). The method does not check to see if it's used the daily quota. Nor does it cache results. So it's easy to be throttled if you aren't careful. I've added an [application key](https://api.stackexchange.com/docs/authentication) since exceeding the quota was a leading cause of failure for Travis CI Continuous Integration tests.
-* The Stack Exchange API only returns 100 user IDs per page. I haven't yet added code to look at subsequent pages. Any user after the 100<sup>th</sup> will be listed in `userX` form as that's the default.
 * My code more or less reproduces a RDBMS&mdash;poorly. It would probably be smarter to load the JSON files into SQLite or something.
 
 ---
