@@ -3,7 +3,12 @@ A collection of scripts to use the data dump from Stack Overflow's dearly depart
 
 Pour one out for [Stack Overflow Documentation](https://meta.stackoverflow.com/questions/354217/sunsetting-documentation) and then grab [the data dump](https://archive.org/details/documentation-dump.7z). With a JSON parser in hand, you can use that content wherever your dreams take you. Just be sure to [provide proper attribution](https://meta.stackoverflow.com/questions/355115/documentation-is-read-only-what-s-next).
 
-The currently available examples are:
+## Libraries
+
+*  [`so-docs.rb`](https://github.com/jericson/so-docs-tools/blob/master/libs/so-docs.rb)&mdash;Library for loading and manipulating the JSON Documentation archive.
+*  [`wayback-api.rb`](https://github.com/jericson/so-docs-tools/blob/master/libs/wayback-api.rb)&mdash;Library to save and verify URLs on the [Wayback Machine](https://web.archive.org/). (Probably should be a separate library as it has no particular connection to the Documentation project other than I want to save pages there.)
+
+## Examples
 
 * [`get-archive.rb`](https://github.com/jericson/so-docs-tools/blob/master/examples/get-archive.rb)&mdash;Downloads the archive and extracts it's contents. You only need to do this once.
 * [`example2html.rb`](https://github.com/jericson/so-docs-tools/blob/master/examples/example2html.rb)&mdash;Extract the HTML representation of an example. To see what this looks like, I made a copy of [Creating and Initializing Arrays](http://jericson.github.io/docs/java/creating-java-arrays.html) in Java.

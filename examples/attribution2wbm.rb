@@ -6,6 +6,7 @@ require 'httparty'
 require 'optparse'
 dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
 require File.join(dir, 'so-docs.rb')
+require File.join(dir, 'wayback-api.rb')
          
 options = {
   :start => 0,
@@ -37,29 +38,20 @@ end
 optparse.parse!
 
 docs = SODocs.new
-examples = docs.load_json('examples')
+posts = docs.load_json(options[:type]+'s')
 
-examples.each do | example |
-  id = example['Id']
+posts.each do | post |
+  id = post['Id']
   next if id < options[:start]
   exit if id > options[:end]
   
   url = "http://stackoverflow.com/documentation/contributors/#{options[:type]}/#{id}"
 
-  check_url = URI('https://web.archive.org/web/*/' + url)
-  puts check_url
-  response = HTTParty.get(check_url)
-  puts response.code, response.message, response.headers.inspect
+  wb = Wayback.new(url)
+  wb.save_page
+  puts "#{url} => #{wb.archive_url}"
+  sleep 1 # Avoid IP-based throttling
 
-  # Based on https://github.com/pastpages/savepagenow/blob/master/savepagenow/api.py
-  if response.headers["x-page-cache"] == "MISS"
-  
-    save_url = URI('https://web.archive.org/save/' + url)
-    puts save_url
-    response = HTTParty.get(save_url)
-    puts response.code, response.message, response.headers.inspect
-    exit unless [200,404].include? response.code # Either success or the Docs page is gone.
-    sleep 1 # Be respectful of archive.org's resources
-  end
+
 end
                  
