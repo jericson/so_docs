@@ -10,7 +10,7 @@ require 'httparty'
 require 'json'
 require 'date'
 dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
-require File.join(dir, 'so-docs.rb')
+require File.join(dir, 'so_docs.rb')
          
 docs = SODocs.new
 

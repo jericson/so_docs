@@ -5,8 +5,8 @@ require 'json'
 require 'httparty'
 require 'optparse'
 dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
-require File.join(dir, 'so-docs.rb')
-require File.join(dir, 'wayback-api.rb')
+require File.join(dir, 'so_docs.rb')
+require File.join(dir, 'wayback_api.rb')
          
 options = {
   :start => 0,
@@ -47,7 +47,7 @@ posts.each do | post |
   
   url = "http://stackoverflow.com/documentation/contributors/#{options[:type]}/#{id}"
 
-  wb = Wayback.new(url)
+  wb = WaybackAPI.new(url)
   wb.save_page
   puts "#{url} => #{wb.archive_url}"
   sleep 1 # Avoid IP-based throttling
