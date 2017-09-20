@@ -1,6 +1,6 @@
 language: ruby
 cache: bundler
-os: osx
+#os: osx
   
 rvm:
   - 2.0.0p648
