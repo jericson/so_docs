@@ -18,7 +18,7 @@ class TestDocsDump < Minitest::Test
 
   def test_example2html
     assert_equal Digest::MD5.hexdigest(`ruby examples/example2html.rb 404`),
-                 '79ee6714cdb54ebbd044b7ac953c20ad'
+                 '8cd9819ca8747f518b691f5a0e1886d5'
   end
                  
 end
