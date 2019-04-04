@@ -6,7 +6,15 @@ Pour one out for [Stack Overflow Documentation](https://meta.stackoverflow.com/q
 ## Getting started
 
 1. [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/).
-
+2. Execute `gem install bundler` to install [Bundler](https://bundler.io/).
+4. In the repository's directory, run `bundle install` to install all
+   the required gems for the scripts.
+3. Clone or download
+   [this very repository](https://github.com/jericson/so_docs) on your
+   machine.
+5. In order to test the scripts and download the Documentation
+   archive, run `bundle exec rake`.
+6. If the test all succeed, you are all set to run the scripts from the `examples` directory.
 
 ## Libraries
 

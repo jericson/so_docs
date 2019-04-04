@@ -48,3 +48,12 @@ build-iPhoneSimulator/
 
 # unless supporting rvm < 1.11.0 or doing something fancy, ignore this:
 .rvmrc
+
+# Emacs
+*~
+
+# Documentation archive files
+*.7z
+*.json
+license.txt
+readme.txt
