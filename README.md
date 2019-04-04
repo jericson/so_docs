@@ -24,7 +24,8 @@ Pour one out for [Stack Overflow Documentation](https://meta.stackoverflow.com/q
 ## Examples
 
 * [`get-archive.rb`](https://github.com/jericson/so_docs/blob/master/examples/get-archive.rb)&mdash;Downloads the archive and extracts it's contents. You only need to do this once.
-* [`example2html.rb`](https://github.com/jericson/so_docs/blob/master/examples/example2html.rb)&mdash;Extract the HTML representation of an example. To see what this looks like, I made a copy of [Creating and Initializing Arrays](http://jericson.github.io/docs/java/creating-java-arrays.html) in Java.
+* [`example2html.rb`](https://github.com/jericson/so_docs/blob/master/examples/example2html.rb)&mdash;Extract the HTML representation of an example. To see what this looks like, I made a copy of [Creating and Initializing Arrays](https://web.archive.org/web/20170912061936/http://jericson.github.io/docs/java/creating-java-arrays.html) in Java.
+** [`revision2jekyll.rb`](https://github.com/jericson/so_docs/blob/master/examples/revision2jekyll.rb)&mdash;a Ruby script that prints a revision history item Markdown text.
 * [`attribution2wbm.rb`](https://github.com/jericson/so_docs/blob/master/examples/attribution2wbm.rb)&mdash;Submits example or topic attribution to the Wayback Machine.
 * [`submit2wbm.rb`](https://github.com/jericson/so_docs/blob/master/examples/submit2wbm.rb)&mdash;a Ruby script that submits all topics to the [Internet Archive Wayback Machine](https://web.archive.org/). Demonstrates how to use `doctags.json` and `topics.json`. (I ran it on August 16, 2017 after Documentation was put in readonly mode. There's probably no reason to run it again. Also, it doesn't work for C# as `c%23` isn't allowed in their URLs.)
 * Stay tuned for other exciting scripts!<sup>*</sup>

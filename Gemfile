@@ -7,3 +7,5 @@ gem 'minitest'
 gem 'httparty'
 
 gem 'seven_zip_ruby'
+
+gem 'htmlentities'

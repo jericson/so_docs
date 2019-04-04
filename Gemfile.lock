@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    htmlentities (4.3.4)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     minitest (5.10.3)
@@ -12,10 +13,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  htmlentities
   httparty
   minitest
   rake
   seven_zip_ruby
 
 BUNDLED WITH
-   1.15.4
+   2.0.1
