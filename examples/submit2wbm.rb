@@ -6,6 +6,9 @@
 
 require 'json'
 require 'httparty'
+dir = File.expand_path(File.join(File.dirname(__FILE__), '..', 'lib'))
+require File.join(dir, 'so_docs.rb')
+require File.join(dir, 'wayback_api.rb')
 
 def slugify (s)
    # https://stackoverflow.com/questions/4308377/ruby-post-title-to-slug/4308399#4308399
@@ -22,13 +25,15 @@ end
 topics = JSON.parse(IO.read('topics.json'))
 
 topics.each do | topic |
-  url = URI.escape('https://web.archive.org/save/https://stackoverflow.com/documentation/' +
+  url = URI.escape('https://stackoverflow.com/documentation/' +
                    tag_lookup[topic['DocTagId']] +
                    "/#{topic['Id']}/" +
                    slugify(topic['Title']))
 
-  puts url
-  response = HTTParty.get(url)
-  puts response.code, response.message, response.headers.inspect
+  wb = WaybackAPI.new(url)
+  wb.save_page
+  puts "#{url} => #{wb.archive_url}"
+  sleep 1 # Avoid IP-based throttling
+  #puts response.code, response.message, response.headers.inspect
 end
                  

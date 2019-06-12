@@ -1,7 +1,7 @@
 require 'json'
 require 'httparty'
 
-class Wayback
+class WaybackAPI
   def initialize (url)
     @url = url
     @snapshots = {}
@@ -41,6 +41,7 @@ class Wayback
   end
 
   def archive_url
-    return @snapshots['closest']['url']
+    return 'https://web.archive.org/web/2/' + @url
+    #return @snapshots['closest']['url']
   end
 end
